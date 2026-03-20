@@ -341,7 +341,7 @@ Session End → Summary
 
 | Layer               | Technology                        | Purpose                       |
 | ------------------- | --------------------------------- | ----------------------------- |
-| Client Applications | Flutter (Mobile) + React (Web)    | Rider app and admin dashboard |
+| Client Applications | React Native (Mobile) + React (Web)| Rider app and admin dashboard |
 | Backend             | FastAPI / Node.js                 | API and business logic        |
 | Database            | Supabase (PostgreSQL)             | Data management and auth      |
 | Geospatial          | PostGIS                           | Location and zone processing  |
@@ -354,34 +354,6 @@ Session End → Summary
 
 ## Screenshots (System Architecture)
 
-### Architecture Overview
-
-* Overall system flow (External APIs → Backend → Database → Client Apps)
-* Kavach Core Engine modules (Vighna, Jokhim, Vishwas, Payout, Activity, ML)
-
-### Backend System
-
-* Engine-wise breakdown (Disruption, Risk, Fraud, Payout, ML)
-* API layer and processing pipeline
-
-### Client Applications
-
-* Rider Mobile App interface
-* Admin Web Dashboard interface
-
-### Data Layer
-
-* Database schema (Users, Zones, Policies, Claims)
-* Geospatial mapping (PostGIS zones)
-
-Store all screenshots inside an `/images` folder and reference them here using:
-
-```
-![Architecture](images/architecture.png)
-![Backend](images/backend.png)
-![Mobile](images/mobile.png)
-![Dashboard](images/dashboard.png)
-```
 
 ---
 
@@ -405,4 +377,4 @@ Zone-Based System
 
 ## Team Tagline
 
-bug_hunter – Building intelligent systems that protect, predict, and empower gig workers in real time.
+Bug_Hunter – Building intelligent systems that protect, predict, and empower gig workers in real time.
