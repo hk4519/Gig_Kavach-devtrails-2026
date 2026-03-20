@@ -72,20 +72,20 @@ GigKavach protects gig workers from income loss caused by:
 
 1. 🌦️ Environmental Disruptions
 
-  1.1 Heavy Rainfall
+    1.1 Heavy Rainfall
 
-  1.2 Flooding / Waterlogging
+    1.2 Flooding / Waterlogging
 
-  1.3 Extreme Heat
+    1.3 Extreme Heat
 
-  1.4 High Pollution (AQI levels)
+    1.4 High Pollution (AQI levels)
 
 2. 🚧 Human-Created Disruptions
 
-  2.1 Traffic Congestion
+    2.1 Traffic Congestion
 
-  2.2 Curfews / Local Restrictions
+    2.2 Curfews / Local Restrictions
 
-  2.3 Strikes / Roadblocks
+    2.3 Strikes / Roadblocks
 
-  2.4 Sudden Zone Closures
+    2.4 Sudden Zone Closures
