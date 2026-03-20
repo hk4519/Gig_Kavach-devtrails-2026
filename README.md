@@ -119,7 +119,7 @@ GigKavach protects gig workers from income loss caused by:
 * **Output**: Probability of disruption event in next 48 hrs → used for proactive rider notifications and dynamic risk adjustment.
 
 ## Fraud Detection Architecture
-
+[Fraud Detection](images/Fraud Detection.jpg)
 To ensure the integrity of the platform, a multi-layer validation process runs before every payout:
 
 ### Layer 1: GPS Anomaly Detection
@@ -142,7 +142,8 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 ### Layer 4: Policy Validation
 * An active weekly policy is required precisely at the time of the disruption.
 * A `12–24 hr` waiting period is enforced after a policy purchase to prevent workers from buying a policy *after* an event has already started.
-
+### ML Risk Engine
+[ML Risk Engine](images/ML Risk Engine.jpg)
 ### Risk Scoring Actions
 
 | Risk Level | System Response |
