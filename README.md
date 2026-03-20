@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="ChatGPT Image Mar 20, 2026, 03_53_03 PM" src="https://github.com/user-attachments/assets/bd29f743-8f85-4faf-9c00-65a942338c9d" />
 
 # AI-Powered Income Protection & Smart Savings for Gig Workers | DEVTrails 2026
 
