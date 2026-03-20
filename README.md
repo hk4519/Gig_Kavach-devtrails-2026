@@ -90,8 +90,33 @@ GigKavach protects gig workers from income loss caused by:
     2.3 Strikes / Roadblocks
 
     2.4 Sudden Zone Closures
+    
 
     
+## AI/ML Integration
+
+### 1. Risk Scoring Engine (Zone-level disruption prediction)
+* **Model**: Gradient Boosting (`scikit-learn`)
+* **Features in**: Rainfall frequency (historical 3–5 yr), flood event count, heatwave days/yr, average winter AQI, storm frequency, zone elevation, drainage quality flag.
+* **Output**: Zone risk score (`0–100`) → directly drives weekly premium calculation. The ML model's predicted score is the sole input into the premium tier lookup; there is no separate manual pricing step. Premium calculation is therefore entirely AI-driven.
+* **Why Gradient Boosting?** Handles non-linear interactions between risk factors (e.g. flood risk is not linear in rainfall, it spikes when drainage capacity is exceeded). Outperforms linear regression on small, structured environmental datasets. Retrained weekly on new disruption event data, so premiums stay calibrated as climate patterns shift.
+
+### 2. Fraud Detection Engine (Anomaly detection on GPS + claim patterns)
+* **Model**: Isolation Forest + rule-based validation layer
+* **Features in**: GPS speed between consecutive points, location jump distance/minute, idle time ratio, zone boundary crossing frequency, historical claim rate per rider.
+* **Output**: Fraud risk score (Low / Medium / High / Critical) → payout held if Critical.
+* **Why Isolation Forest?** Unsupervised, no labelled fraud data needed at launch. Naturally identifies outliers (e.g. a rider whose GPS shows 120 km/h in BTM Layout) without requiring prior fraud examples.
+
+### 3. Income Baseline Estimator (Per-zone, per-hour expected earnings)
+* **Model**: Gradient Boosting regression
+* **Features in**: POI density (restaurants, dark stores), population density, road connectivity index, historical order volume, time of day, day of week.
+* **Output**: `Expected_Income(zone, time)` → baseline for payout calculation.
+* **Why not use platform data?** Platform earnings APIs are unavailable. Proxy variables (POI density × connectivity / traffic factor) have a strong correlation with actual delivery volume in Q-commerce zones.
+
+### 4. Disruption Forecasting (Optional, Phase 3)
+* **Model**: Facebook Prophet (time-series)
+* **Features in**: Historical weather data, seasonal patterns, IMD forecasts.
+* **Output**: Probability of disruption event in next 48 hrs → used for proactive rider notifications and dynamic risk adjustment.
 
 ## Fraud Detection Architecture
 
