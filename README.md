@@ -18,10 +18,10 @@ Or get their savings returned with interest if no disruption occurs
 
 By ensuring both financial protection and savings growth, GigKavach empowers gig workers with a reliable safety net in an otherwise uncertain work environment.
 
-### How GigKavach Works for Rahul (Example)
+## How GigKavach Works for Rahul (Example)
 
 1. **Daily Work & Micro-Savings:** As Rahul earns his daily income, a micro-deduction of **₹2 to ₹5 per order** is automatically made.
-2. **Coverage Active:** This deduction updates his Wallet / Savings Pool, making his **Coverage Active**.
+2. **Coverage Active:** This deduction updates his **Weekly Wallet / Savings Pool**, making his **Coverage Active**.
 3. **Disruption Check:** The system continuously monitors for disruptions like **Rain, poor AQI, or Curfews**.
 
 * **Scenario A: Disruption Occurs (YES)**
@@ -29,10 +29,10 @@ By ensuring both financial protection and savings growth, GigKavach empowers gig
   * Rahul receives an **Instant Payment via UPI**, ensuring his daily financial needs are met. *(Process Ends)*
 
 * **Scenario B: No Disruption Occurs (NO)**
-  * Rahul works normally until the **End of Plan is Reached**.
+  * Rahul works normally until the **End of the Weekly Plan is Reached**.
   * A **10% Company Fee** is deducted from his pool.
   * An **Interest of 4–5%** is added to his remaining savings.
-  * The final amount **(Savings + Interest)** is safely **returned to Rahul**. *(Process Ends)*
+  * The final amount **(Savings + Interest)** is safely **returned to Rahul** as a weekly payout. *(Process Ends)*
 
 
 ## What We're Building
