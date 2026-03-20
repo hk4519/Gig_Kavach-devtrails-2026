@@ -97,6 +97,21 @@ GigKavach protects gig workers from income loss caused by:
 ![Architecture Diagram](images/nnew.png)
 
 
+## Technology Stack
+
+| Layer | Technology | Rationale |
+| :--- | :--- | :--- |
+| **Mobile App** | 📱 Flutter (Dart) | Cross-platform, background GPS, offline tolerance |
+| **Backend API** | ⚙️ FastAPI (Python) | Async-first, ideal for real-time polling loops |
+| **Database** | 🗄️ Supabase (PostgreSQL) | Managed Postgres, built-in auth, real-time subscriptions |
+| **Geospatial** | 🗺️ PostGIS (via Supabase) | Zone mapping, GPS-to-zone assignment, spatial queries |
+| **ML / AI** | 🧠 Python · scikit-learn · Prophet | Gradient Boosting for risk scoring + fraud; Prophet for forecasting |
+| **Weather API** | ⛅ OpenWeatherMap (free tier) | Rainfall, temperature, wind speed, storm alerts |
+| **Pollution API** | 🏭 AQICN (free tier) | Real-time AQI per city zone |
+| **Payment** | 💳 Razorpay Sandbox | Simulated premium collection + payout disbursement |
+| **Notifications** | 🔔 Firebase Cloud Messaging | Push alerts for disruption events and payout confirmations |
+
+
 ## Development Plan
 
 ### ✅ Phase 1: Core Backend & Data Ingestion (Completed)
