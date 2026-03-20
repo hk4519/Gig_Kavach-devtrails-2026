@@ -92,9 +92,6 @@ GigKavach protects gig workers from income loss caused by:
 
 ## Architecture Diagram
 
-![Architecture Diagram](nnewcopy.png)
-
-
 The GigKavach platform is built on a highly modular and automated architecture to ensure real-time protection and seamless payouts. The system consists of the following interconnected components:
 
 1. 📱 User Layer
