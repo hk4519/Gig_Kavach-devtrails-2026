@@ -393,6 +393,10 @@ Session End → Summary
 
 ## Screenshots (System Architecture)
 
+## Mobile Application Preview
+
+ <img width="1536" height="1024" alt="mob" src="https://github.com/user-attachments/assets/77868d3a-869f-414a-a637-24db15b9f1d9" />
+
 
 ---
 
