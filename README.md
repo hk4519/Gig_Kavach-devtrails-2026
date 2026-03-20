@@ -169,7 +169,7 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 - [x] Node.js Business Logic and Authentication setup
 - [x] API Gateway configuration for secure request routing
 - [x] Data Storage schema design (User Profiles, Location Data, Earnings Data, Risk Scores)
-- [x] Integration with 🌐 External APIs (Weather API, AQI API, Traffic API)
+- [x] Integration with  External APIs (Weather API, AQI API, Traffic API)
 - [x] Setting up basic Admin Dashboard for Live Tracking
 - [x] Core architecture planning & finalization
 
