@@ -230,44 +230,65 @@ External Data Sources
 
 ---
 
-## Backend System (Kavach Core Engine)
+# GigKavach – Backend System Architecture (Kavach Core Engine)
 
-### Vighna Engine (Disruption Detection)
+GigKavach is designed as a modular and intelligent backend system that provides real-time income protection for gig workers. The system integrates real-time data, machine learning models, and rule-based automation to ensure accurate disruption detection, risk assessment, and instant payouts.
 
-Detects real-time disruptions at zone level.
+---
 
-### Jokhim Engine (Risk Scoring)
+## Kavach Core Engine (Backend System)
 
-Calculates risk based on environmental and historical data.
+The Kavach Core Engine acts as the central decision-making unit of the system. It coordinates multiple specialized engines to process data and execute actions efficiently.
 
-### Vishwas Engine (Fraud Detection)
+---
 
-Identifies anomalies using behavioral and sensor data.
+## Vighna Engine (Disruption Detection)
 
-### Payout Engine (Compensation Logic)
+The Vighna Engine continuously monitors environmental and external factors such as weather conditions, pollution levels, traffic disruptions, and regional restrictions. It operates at a hyperlocal zone level to accurately detect disruptions that impact a worker’s ability to earn.
 
-Calculates payouts using hybrid model.
+---
 
-### Activity Engine (Work Verification)
+## Jokhim Engine (Risk Scoring)
 
-Validates rider activity during disruption.
+The Jokhim Engine calculates a dynamic risk score using environmental data, historical patterns, and worker-specific behavior. This score is used for pricing, alerts, and disruption prediction.
 
-### ML Engine (Prediction Pipeline)
+---
 
-Handles risk prediction and forecasting.
+## Vishwas Engine (Fraud Detection)
+
+The Vishwas Engine identifies fraudulent activities by analyzing GPS data, movement patterns, and behavioral inconsistencies. It uses anomaly detection techniques to ensure only valid claims are processed.
+
+---
+
+## Payout Engine (Compensation Logic)
+
+The Payout Engine calculates compensation using a hybrid model that combines predicted income and real-time disruption impact. This ensures fair and accurate payouts.
+
+---
+
+## Activity Engine (Work Verification)
+
+The Activity Engine validates whether the worker was genuinely active during the disruption period by verifying location data, session activity, and movement patterns.
+
+---
+
+## ML Engine (Prediction Pipeline)
+
+The ML Engine handles predictive analytics including risk prediction, income forecasting, and pattern recognition. It continuously improves system accuracy through learning.
 
 ---
 
 ## Database Layer
 
-Supabase with PostgreSQL and PostGIS
+GigKavach uses Supabase with PostgreSQL and PostGIS for efficient handling of structured and geospatial data.
 
-* User data
-* Zone mapping
-* Policy management
-* Claims tracking
-* GPS logs
-* Audit trails
+The database manages:
+- User data  
+- Zone mapping  
+- Policy management  
+- Claims tracking  
+- GPS logs  
+- Audit trails  
 
 ---
 
@@ -275,43 +296,61 @@ Supabase with PostgreSQL and PostGIS
 
 ### Rider Application
 
-* Session tracking
-* Earnings dashboard
-* Risk alerts
-* Claim tracking
+The rider application provides:
+- Session tracking  
+- Earnings dashboard  
+- Risk alerts  
+- Claim tracking  
 
-### Admin Dashboard
-
-* Live monitoring
-* Analytics
-* Fraud review
-
-### Notification System
-
-* Real-time alerts
-* Claim updates
-
-### Payment System
-
-* Policy purchase
-* Instant payouts
+It is designed for ease of use and real-time access.
 
 ---
 
-## Why Mobile First
+### Admin Dashboard
 
-* Works on low-end devices
-* Handles poor connectivity
-* Supports background tracking
-* Optimized for field usage
+The admin dashboard enables:
+- Live monitoring  
+- Analytics and insights  
+- Fraud detection review  
+
+---
+
+## Notification System
+
+The system provides real-time notifications including:
+- Risk alerts  
+- Claim updates  
+- System messages  
+
+---
+
+## Payment System
+
+The payment module supports:
+- Policy purchase  
+- Instant payouts  
+
+---
+
+## Mobile-First Approach
+
+GigKavach is designed with a mobile-first approach to ensure usability in real-world conditions.
+
+- Works efficiently on low-end devices  
+- Handles poor connectivity  
+- Supports background tracking  
+- Optimized for field usage  
 
 ---
 
 ## Hyperlocal Zone Model
 
-* 2 km × 2 km grid system
-* Accurate disruption detection
-* Better fraud control
+The system uses a 2 km × 2 km grid-based zoning model.
+
+Benefits:
+- Accurate disruption detection  
+- Better fraud control  
+- Precise risk assessment  
 
 ---
 
