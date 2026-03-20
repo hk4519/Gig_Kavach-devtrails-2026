@@ -91,6 +91,41 @@ GigKavach protects gig workers from income loss caused by:
 
     2.4 Sudden Zone Closures
 
+    
+
+## Fraud Detection Architecture
+
+To ensure the integrity of the platform, a multi-layer validation process runs before every payout:
+
+### Layer 1: GPS Anomaly Detection
+* **Speed check**: `> 80 km/h` between consecutive GPS points → **Flag**
+* **Location jump**: `> 5 km` displacement in 1 minute → **Flag**
+* **Mock location detection**: Device-level check for GPS spoofing apps or active developer mode.
+* **Path continuity**: Non-road trajectories are flagged.
+
+### Layer 2: Activity Verification
+* **Minimum distance**: `> 1 km` covered within any 30-minute window.
+* **Idle threshold**: `< 15 minutes` continuous idle during an active working session.
+* **Speed range**: `10–40 km/h` (consistent with urban two-wheeler delivery profiles).
+* **Zone presence**: Rider must be physically in the disruption zone for `≥ 50%` of the event duration.
+
+### Layer 3: Duplicate Claim Prevention
+* Each disruption event is assigned a unique `Event_ID`.
+* **Uniqueness check**: A combination of `(Rider_ID + Event_ID + Zone_ID)` must be unique. If a record already exists, it is rejected.
+* One payout per rider per disruption event is strictly enforced at the database level.
+
+### Layer 4: Policy Validation
+* An active weekly policy is required precisely at the time of the disruption.
+* A `12–24 hr` waiting period is enforced after a policy purchase to prevent workers from buying a policy *after* an event has already started.
+
+### Risk Scoring Actions
+
+| Risk Level | System Response |
+| :--- | :--- |
+| 🟢 **Low** | Session monitored, payout proceeds automatically. |
+| 🟡 **Medium** | Session flagged, payout proceeds but with a detailed audit log. |
+| 🟠 **High** | Payout held for 24 hrs, manual review queued. |
+| 🔴 **Critical** | Payout completely blocked, account explicitly flagged. |
 
 ## 🏗️ Architecture Diagram
 
