@@ -39,6 +39,220 @@ By ensuring both financial protection and savings growth, GigKavach empowers gig
 GigKavach is an AI-powered platform that protects gig workers’ income from disruptions like weather and pollution. It provides a unified dashboard to track earnings, savings, and coverage in real time. The system uses AI to assess risk, suggest optimal work decisions, and recommend safer working zones. It offers automatic insurance with instant payouts during disruptions and a fully automated claim process. Along with protection, it enables micro-savings and cashback with interest if no claims occur. Overall, it combines insurance, savings, and intelligent assistance to improve financial stability and productivity for gig workers.
 
 
+# Persona: Who We Are Protecting
+
+## Representative Persona
+
+| Attribute          | Detail                                      |
+| ------------------ | ------------------------------------------- |
+| Name               | Ravi (Representative Persona)               |
+| Age                | 25                                          |
+| Platform           | Swiggy (Primary), Zomato (Secondary)        |
+| City               | Chennai, Primary Zone: Velachery            |
+| Working Hours      | 9–10 hrs/day, 6 days/week                   |
+| Avg Deliveries/Day | 14–17 orders                                |
+| Avg Hourly Income  | ₹85–₹100/hr                                 |
+| Monthly Net Income | ₹18,000–₹24,000 (after fuel/maintenance)    |
+| Current Insurance  | No income protection                        |
+| Key Vulnerability  | Heavy rain (Oct–Dec), heat waves (May–June) |
+
+---
+
+## Why Food + Q-Commerce Riders?
+
+Delivery riders operate in highly dynamic environments where income is directly tied to external conditions. Unlike traditional jobs, their earnings depend on:
+
+* Weather conditions
+* Local demand
+* Road accessibility
+
+In dense urban areas, even a **small disruption (like waterlogging or traffic blockage within 1 km)** can significantly reduce deliveries.
+
+Food delivery riders have slightly more flexibility compared to quick-commerce riders, but both face **high exposure to hyperlocal disruptions**, making them ideal candidates for income protection.
+
+---
+
+## Ravi's Disruption Scenario (Worked Example)
+
+**Normal Day:**
+
+* 3 deliveries/hour × ₹32/delivery = ₹96/hour
+
+**Heavy Rain Disruption (Velachery, 70mm rainfall in 2–3 hrs):**
+
+* 1 delivery/hour × ₹32 = ₹32/hour
+
+**Disruption Window:**
+
+* 3 hours
+
+**Estimated Income Loss:**
+
+* ₹192
+
+**GigKavach Estimated Payout:**
+
+* ₹140 – ₹175 (based on hybrid model)
+
+---
+
+# Core Disruptions Covered
+
+We focus on **5 measurable disruptions** that directly affect delivery performance in Chennai:
+
+| # | Disruption         | Trigger Threshold          | Monitoring Frequency | Risk Level |
+| - | ------------------ | -------------------------- | -------------------- | ---------- |
+| 1 | Heavy Rainfall     | ≥ 40 mm within 3 hrs       | Every 15 min         | High       |
+| 2 | Urban Waterlogging | Rain + low-lying zone flag | Every 15 min         | High       |
+| 3 | Extreme Heat       | ≥ 42°C for ≥ 2 hrs         | Every 30 min         | Medium     |
+| 4 | Air Pollution      | AQI ≥ 250 for ≥ 6 hrs      | Every 1 hr           | Low        |
+| 5 | Strong Winds/Storm | Wind ≥ 50 km/h             | Event-based          | Moderate   |
+
+These disruptions are:
+
+* Objectively measurable via APIs
+* Frequent in urban environments
+* Directly linked to delivery reduction
+
+---
+
+# Weekly Premium Model
+
+## How It Works
+
+Premiums are calculated weekly based on the rider’s primary working zone using historical environmental data.
+
+This ensures:
+
+* Stable pricing
+* Predictability
+* No sudden mid-week changes
+
+---
+
+## Zone Risk Score Formula
+
+```
+Risk Score = (Rain Risk × 0.30) 
+           + (Flood Risk × 0.25)
+           + (Heat Risk × 0.20) 
+           + (Traffic Risk × 0.15)
+           + (Storm Risk × 0.10)
+```
+
+---
+
+## Worked Example: Velachery, Chennai
+
+| Risk Factor     | Score (0–100) | Weight | Contribution         |
+| --------------- | ------------- | ------ | -------------------- |
+| Rain Risk       | 65            | 0.30   | 19.5                 |
+| Flood Risk      | 60            | 0.25   | 15.0                 |
+| Heat Risk       | 40            | 0.20   | 8.0                  |
+| Traffic Risk    | 35            | 0.15   | 5.25                 |
+| Storm Risk      | 25            | 0.10   | 2.5                  |
+| **Total Score** |               |        | **50.25 → Moderate** |
+
+---
+
+## Weekly Premium Tiers
+
+| Risk Category  | Score Range | Weekly Premium | Coverage Limit |
+| -------------- | ----------- | -------------- | -------------- |
+| Low Risk       | 0–30        | ₹20            | ₹1,000         |
+| Moderate Risk  | 31–50       | ₹35            | ₹1,500         |
+| High Risk      | 51–70       | ₹50            | ₹2,000         |
+| Very High Risk | 71–85       | ₹70            | ₹2,000         |
+| Extreme Risk   | 86–100      | ₹90            | ₹2,000         |
+
+For Ravi:
+₹35/week → ₹1,500 coverage
+
+---
+
+## Seasonal Adjustments
+
+* Monsoon: Rain risk +10%
+* Summer: Heat risk +10%
+* Winter: Pollution risk +10%
+
+Premiums are locked weekly and updated based on historical trends, not real-time spikes.
+
+---
+
+## Payout Caps
+
+| Level     | Limit  |
+| --------- | ------ |
+| Per Hour  | ₹90    |
+| Per Event | ₹1,200 |
+| Per Week  | ₹1,500 |
+| Per Month | ₹5,000 |
+
+---
+
+# Parametric Trigger & Payout Logic
+
+## Automated Flow
+
+1. Collect environmental data (Rain, Temperature, AQI)
+2. Check threshold conditions
+3. Compute disruption score
+4. Validate rider activity
+5. Trigger payout
+
+---
+
+## Disruption Detection Logic
+
+```
+Env_Score = 0.4 × Rain + 0.3 × AQI + 0.3 × Traffic
+Disruption Triggered if:
+Env_Score ≥ 0.6 AND Activity Drop ≥ 0.4
+```
+
+---
+
+## Hybrid Payout Model
+
+```
+Hybrid Score = 0.5 × Income Loss 
+             + 0.3 × Activity Drop 
+             + 0.2 × Environmental Score
+```
+
+```
+Final Payout = Expected Income × Hybrid Score × Lost Hours
+```
+
+---
+
+## Ravi's Example Calculation
+
+| Signal           | Calculation       | Score    |
+| ---------------- | ----------------- | -------- |
+| Income Loss      | (₹90 − ₹32) / ₹90 | 0.64     |
+| Activity Drop    | (16 − 5) / 16     | 0.69     |
+| Environmental    | Combined factors  | 0.70     |
+| **Hybrid Score** |                   | **0.66** |
+
+Final Payout:
+₹90 × 0.66 × 3 hrs = ₹178
+
+---
+
+# Summary
+
+GigKavach provides:
+
+* Predictive income protection
+* Automated payouts
+* Hyperlocal risk detection
+* Fair and data-driven compensation
+
+It transforms traditional insurance into a **real-time intelligent protection system for gig workers**.
+
+
 ## MVP_Features
 
 1. Aay Darpan (Earnings Dashboard) – Displays real-time daily and weekly earnings along with protected income.
