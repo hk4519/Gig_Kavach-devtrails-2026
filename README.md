@@ -41,7 +41,7 @@ GigKavach is an AI-powered platform that protects gig workers’ income from dis
 
 ## MVP_Features
 
-1. Aay Darpan (Earnings Dashboard) – Displays real-time daily and weekly    earnings along with protected income.
+1. Aay Darpan (Earnings Dashboard) – Displays real-time daily and weekly earnings along with protected income.
 
 2. Jokhim Soochak (Risk Indicator) – Provides live risk insights using weather and AQI data.
 
@@ -71,7 +71,7 @@ GigKavach is an AI-powered platform that protects gig workers’ income from dis
 ## Core Disruptions Covered
 GigKavach protects gig workers from income loss caused by:
 
-1. 🌦️ Environmental Disruptions
+1. Environmental Disruptions
 
     1.1 Heavy Rainfall
 
@@ -81,7 +81,7 @@ GigKavach protects gig workers from income loss caused by:
 
     1.4 High Pollution (AQI levels)
 
-2. 🚧 Human-Created Disruptions
+2. Human-Created Disruptions
 
     2.1 Traffic Congestion
 
@@ -151,12 +151,12 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 
 | Risk Level | System Response |
 | :--- | :--- |
-| 🟢 **Low** | Session monitored, payout proceeds automatically. |
-| 🟡 **Medium** | Session flagged, payout proceeds but with a detailed audit log. |
-| 🟠 **High** | Payout held for 24 hrs, manual review queued. |
-| 🔴 **Critical** | Payout completely blocked, account explicitly flagged. |
+| **Low** | Session monitored, payout proceeds automatically. |
+| **Medium** | Session flagged, payout proceeds but with a detailed audit log. |
+| **High** | Payout held for 24 hrs, manual review queued. |
+| **Critical** | Payout completely blocked, account explicitly flagged. |
 
-## 🏗️ Architecture Diagram
+## Architecture Diagram
 
 ![Architecture Diagram](images/nnew.png)
 
@@ -165,7 +165,7 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 
 ## Development Plan
 
-### ✅ Phase 1: Core Backend & Data Ingestion (Completed)
+### Phase 1: Core Backend & Data Ingestion (Completed)
 - [x] Node.js Business Logic and Authentication setup
 - [x] API Gateway configuration for secure request routing
 - [x] Data Storage schema design (User Profiles, Location Data, Earnings Data, Risk Scores)
@@ -173,18 +173,18 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 - [x] Setting up basic Admin Dashboard for Live Tracking
 - [x] Core architecture planning & finalization
 
-### 🚀 Phase 2: ML Engine & Automated Triggers (Current)
-- [ ] 🧠 ML Engine setup (Data Preprocessing pipelines, Income Estimation)
+###  Phase 2: ML Engine & Automated Triggers (Current)
+- [ ] ML Engine setup (Data Preprocessing pipelines, Income Estimation)
 - [ ] Implement Risk Prediction modeling using real-time API data
 - [ ] Deploy statistical Fraud Detection models
-- [ ] ⚡ Trigger Engine implementation (Rain, AQI, Traffic, and Heat triggers)
+- [ ] Trigger Engine implementation (Rain, AQI, Traffic, and Heat triggers)
 - [ ] Automated risk score evaluation pipeline (ML Engine → Trigger Engine)
 - [ ] Risk Heatmap integration on the Admin Dashboard
 
-### ⏳ Phase 3: Client Apps & Payment Execution (Upcoming)
-- [ ] 📱 User Layer Development (Mobile App for gig workers, Web Dashboard)
+###  Phase 3: Client Apps & Payment Execution (Upcoming)
+- [ ] User Layer Development (Mobile App for gig workers, Web Dashboard)
 - [ ] Linking continuous user requests directly into the Backend System
-- [ ] 💳 Payment System implementation (Stripe Payment Gateway, Digital Wallet mechanism)
+- [ ] Payment System implementation (Stripe Payment Gateway, Digital Wallet mechanism)
 - [ ] End-to-end auto-payout trigger testing (Trigger Engine → Payment System)
 - [ ] Payout Analytics module deployment on the Admin Dashboard
 - [ ] Final end-to-end simulation (Simulated environmental triggers → Instant Payouts via Wallet)
