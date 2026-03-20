@@ -202,3 +202,263 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 - [ ] Payout Analytics module deployment on the Admin Dashboard
 - [ ] Final end-to-end simulation (Simulated environmental triggers → Instant Payouts via Wallet)
 
+
+# System Architecture
+
+## Component Overview
+
+```
+External Data Sources
+  Weather API · AQI Data · GPS/Maps · Traffic Data · Flood Alerts
+                          ↓
+              Backend API (FastAPI / Node.js)
+    ┌─────────────────────────────────────────────┐
+    │  Disruption Detection Engine                │
+    │  Risk Scoring Module                       │
+    │  Fraud Detection System                    │
+    │  Payout Calculation Engine                 │
+    │  Activity Verification Module              │
+    │  ML Prediction Pipeline                    │
+    └─────────────────────────────────────────────┘
+                          ↓
+         Supabase (PostgreSQL + PostGIS)
+    Users · Zones · Policies · Claims · GPS Logs · Audit Logs
+                          ↓
+         ┌────────────────────────────────┐
+         │  Mobile App (Flutter / React)  │
+         │  Admin Dashboard (Web)         │
+         │  Push Notifications (FCM)      │
+         │  Payment Gateway (Razorpay)    │
+         └────────────────────────────────┘
+```
+
+## External Data Sources
+
+* Weather API (OpenWeatherMap)
+  Provides rainfall, temperature, storm alerts, and wind speed data.
+
+* Air Quality Data (AQI / CPCB)
+  Monitors pollution levels that can disrupt delivery operations.
+
+* GPS & Maps APIs
+  Tracks rider movement and maps them to operational zones.
+
+* Traffic APIs
+  Detects congestion patterns affecting delivery efficiency.
+
+* Flood / Disaster Alerts
+  Identifies real-time extreme events impacting rider income.
+
+## Backend System
+
+### Disruption Detection Engine
+
+Continuously monitors environmental and external signals (weather, AQI, traffic) to detect disruption events at a zone level.
+
+### Risk Scoring Module
+
+Calculates risk scores based on:
+
+* Environmental severity
+* Historical disruption patterns
+* Zone vulnerability
+
+### Fraud Detection System
+
+Detects anomalies using:
+
+* Sensor validation (accelerometer, GPS consistency)
+* Device fingerprinting
+* Behavioral pattern analysis
+
+### Payout Calculation Engine
+
+Uses a hybrid model combining:
+
+* Income deviation
+* Activity drop
+* Environmental intensity
+  to compute fair compensation.
+
+### Activity Verification Module
+
+Validates whether a rider was genuinely active during a disruption using:
+
+* GPS session tracking
+* Movement patterns
+* Work consistency
+
+### ML Pipeline
+
+* Gradient boosting for fraud and risk detection
+* Time-series forecasting for disruption prediction
+
+## Database Layer
+
+### Supabase (PostgreSQL + PostGIS)
+
+Stores and manages:
+
+* Users – rider profiles and KYC data
+* Zones – geospatial grid mapping
+* Policies – insurance plans and subscriptions
+* Claims – payout records
+* GPS Logs – real-time tracking data
+* Audit Logs – fraud checks and system decisions
+
+PostGIS enables:
+
+* Zone mapping
+* Spatial queries
+* GPS-to-zone assignment
+
+## Client Applications
+
+### Mobile Application (Riders)
+
+* Built using Flutter / React Native
+* Features:
+
+  * Start/stop work sessions
+  * Real-time GPS tracking
+  * Disruption alerts
+  * Claim and payout tracking
+  * Offline support
+
+### Admin Dashboard (Web)
+
+* Used by insurers and operators
+* Provides:
+
+  * Live zone monitoring
+  * Claim analytics
+  * Fraud detection insights
+  * System control panel
+
+### Notifications
+
+* Firebase Cloud Messaging (FCM)
+* Sends:
+
+  * Disruption alerts
+  * Claim status updates
+  * Payout confirmations
+
+### Payments
+
+* Razorpay (Sandbox/Production)
+* Handles:
+
+  * Policy purchases
+  * Instant payouts
+
+## Why Mobile-First Architecture
+
+Delivery workers primarily rely on smartphones with limited connectivity and low-end hardware.
+
+A mobile-first approach ensures:
+
+* Reliable GPS tracking even in low-network areas
+* Background activity monitoring
+* Real-time push notifications
+* Simple, one-handed UI for on-field usage
+
+The admin interface is web-based since insurers operate from desktops.
+
+## Hyperlocal Zone Model
+
+The system divides cities into 2 km × 2 km grid zones, each evaluated independently.
+
+### Rationale
+
+* Weather APIs provide ~1 km resolution
+* AQI stations cover 3–5 km radius
+* Delivery hubs operate within 1.5–3 km
+* Urban disruptions are highly localized
+
+### Benefits
+
+* Precise disruption detection
+* Reduced false payouts
+* Better fraud isolation
+* Scalable city-wide monitoring
+
+## Application Workflow
+
+### Rider Flow
+
+```
+Sign Up / KYC
+        ↓
+Zone Assignment + Income Baseline
+        ↓
+Purchase Policy (via Razorpay)
+        ↓
+Waiting Period → Coverage Active
+        ↓
+Start Work Session (GPS Tracking)
+        ↓
+System Monitors Zone Continuously
+        ↓
+Disruption Detected?
+   YES → Verify Activity + Policy
+        → Calculate Payout
+        → Fraud Check
+            → Approved → Instant Payout
+            → Flagged → Review Queue
+   NO  → Continue Session
+        ↓
+End Session → Earnings + History
+```
+
+### Admin / Insurer Flow
+
+* Live disruption map (zone-wise)
+* Active riders per zone
+* Daily / weekly claims
+* Fraud detection queue
+* Loss ratio analytics
+* Predictive disruption insights (next 24–48 hours)
+
+## Technology Stack
+
+| Layer         | Technology                     | Rationale                      |
+| ------------- | ------------------------------ | ------------------------------ |
+| Mobile App    | Flutter / React Native         | Cross-platform, GPS tracking   |
+| Backend API   | FastAPI / Node.js              | Scalable, real-time processing |
+| Database      | Supabase (PostgreSQL)          | Managed DB with auth           |
+| Geospatial    | PostGIS                        | Spatial queries                |
+| ML / AI       | Python (scikit-learn, Prophet) | Risk + forecasting             |
+| Weather API   | OpenWeatherMap                 | Reliable environmental data    |
+| AQI Data      | AQICN / CPCB                   | Pollution tracking             |
+| Payments      | Razorpay                       | Easy integration               |
+| Notifications | Firebase Cloud Messaging       | Real-time alerts               |
+
+## Key Design Decisions
+
+### Parametric Insurance Model
+
+Enables:
+
+* Instant payouts
+* No manual claim verification
+* Scalable operations
+
+### Hybrid Risk Model
+
+Combines:
+
+* Environmental data
+* User activity
+* Income patterns
+
+This reduces false positives and improves fairness.
+
+### Zone-Based Evaluation
+
+Ensures:
+
+* High precision
+* Localized decision-making
+* Better fraud control
+
