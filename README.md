@@ -173,3 +173,31 @@ The GigKavach platform is built on a highly modular and automated architecture t
 ## 🏗️ Architecture Diagram
 
 ![Architecture Diagram](images/nnew.png)
+
+
+## Development Plan
+
+### ✅ Phase 1: Core Backend & Data Ingestion (Completed)
+- [x] Node.js Business Logic and Authentication setup
+- [x] API Gateway configuration for secure request routing
+- [x] Data Storage schema design (User Profiles, Location Data, Earnings Data, Risk Scores)
+- [x] Integration with 🌐 External APIs (Weather API, AQI API, Traffic API)
+- [x] Setting up basic Admin Dashboard for Live Tracking
+- [x] Core architecture planning & finalization
+
+### 🚀 Phase 2: ML Engine & Automated Triggers (Current)
+- [ ] 🧠 ML Engine setup (Data Preprocessing pipelines, Income Estimation)
+- [ ] Implement Risk Prediction modeling using real-time API data
+- [ ] Deploy statistical Fraud Detection models
+- [ ] ⚡ Trigger Engine implementation (Rain, AQI, Traffic, and Heat triggers)
+- [ ] Automated risk score evaluation pipeline (ML Engine → Trigger Engine)
+- [ ] Risk Heatmap integration on the Admin Dashboard
+
+### ⏳ Phase 3: Client Apps & Payment Execution (Upcoming)
+- [ ] 📱 User Layer Development (Mobile App for gig workers, Web Dashboard)
+- [ ] Linking continuous user requests directly into the Backend System
+- [ ] 💳 Payment System implementation (Stripe Payment Gateway, Digital Wallet mechanism)
+- [ ] End-to-end auto-payout trigger testing (Trigger Engine → Payment System)
+- [ ] Payout Analytics module deployment on the Admin Dashboard
+- [ ] Final end-to-end simulation (Simulated environmental triggers → Instant Payouts via Wallet)
+
