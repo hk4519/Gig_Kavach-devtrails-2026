@@ -172,3 +172,6 @@ The GigKavach platform is built on a highly modular and automated architecture t
 * **Instant Payouts**: Verified events fire an auto-payout trigger to the *Payment System*, instantly sending an instant payout to the user.
 * **Monitoring**: Analytics and payout events are continuously synchronized with the *Admin Dashboard* for live tracking and heatmaps.
 
+## 🏗️ Architecture Diagram
+
+![Architecture Diagram](images/nnew.png)
