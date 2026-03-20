@@ -398,22 +398,36 @@ Session End → Summary
 
 ## Key Design Decisions
 
-Parametric Model
+### Parametric Model
 
-* Instant payouts
-* No manual claims
+GigKavach follows a parametric insurance model where payouts are triggered automatically based on predefined conditions such as weather or disruptions.
 
-Hybrid Risk Model
+- Enables instant payouts  
+- Eliminates manual claims  
+- Reduces processing time  
 
-* Multiple signals for accuracy
+---
 
-Zone-Based System
+### Hybrid Risk Model
 
-* Localized decision making
-* Scalable architecture
+The system uses multiple signals for risk calculation.
+
+- Combines environmental, behavioral, and historical data  
+- Improves accuracy and fairness  
+- Reduces false positives  
+
+---
+
+### Zone-Based System
+
+All decisions are made at a localized level.
+
+- Context-aware risk analysis  
+- Precise payouts  
+- Scalable architecture  
 
 ---
 
 ## Team Tagline
 
-Bug_Hunter – Building intelligent systems that protect, predict, and empower gig workers in real time.
+**Bug_Hunter – Building intelligent systems that protect, predict, and empower gig workers in real time.**
