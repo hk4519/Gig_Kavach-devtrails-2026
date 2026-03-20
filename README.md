@@ -161,19 +161,6 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 ![Architecture Diagram](images/nnew.png)
 
 
-## Technology Stack
-
-| Layer | Technology | Rationale |
-| :--- | :--- | :--- |
-| **Mobile App** | 📱 Flutter (Dart) | Cross-platform, background GPS, offline tolerance |
-| **Backend API** | ⚙️ FastAPI (Python) | Async-first, ideal for real-time polling loops |
-| **Database** | 🗄️ Supabase (PostgreSQL) | Managed Postgres, built-in auth, real-time subscriptions |
-| **Geospatial** | 🗺️ PostGIS (via Supabase) | Zone mapping, GPS-to-zone assignment, spatial queries |
-| **ML / AI** | 🧠 Python · scikit-learn · Prophet | Gradient Boosting for risk scoring + fraud; Prophet for forecasting |
-| **Weather API** | ⛅ OpenWeatherMap (free tier) | Rainfall, temperature, wind speed, storm alerts |
-| **Pollution API** | 🏭 AQICN (free tier) | Real-time AQI per city zone |
-| **Payment** | 💳 Razorpay Sandbox | Simulated premium collection + payout disbursement |
-| **Notifications** | 🔔 Firebase Cloud Messaging | Push alerts for disruption events and payout confirmations |
 
 
 ## Development Plan
@@ -202,7 +189,6 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 - [ ] Payout Analytics module deployment on the Admin Dashboard
 - [ ] Final end-to-end simulation (Simulated environmental triggers → Instant Payouts via Wallet)
 
-
 # System Architecture
 
 ## Component Overview
@@ -211,254 +197,212 @@ To ensure the integrity of the platform, a multi-layer validation process runs b
 External Data Sources
   Weather API · AQI Data · GPS/Maps · Traffic Data · Flood Alerts
                           ↓
-              Backend API (FastAPI / Node.js)
+              Backend System (Kavach Core Engine)
     ┌─────────────────────────────────────────────┐
-    │  Disruption Detection Engine                │
-    │  Risk Scoring Module                       │
-    │  Fraud Detection System                    │
-    │  Payout Calculation Engine                 │
-    │  Activity Verification Module              │
-    │  ML Prediction Pipeline                    │
+    │  Vighna Engine (Disruption Detection)       │
+    │  Jokhim Engine (Risk Scoring)               │
+    │  Vishwas Engine (Fraud Detection)           │
+    │  Payout Engine (Compensation Logic)         │
+    │  Activity Engine (Work Verification)        │
+    │  ML Engine (Prediction Pipeline)            │
     └─────────────────────────────────────────────┘
                           ↓
-         Supabase (PostgreSQL + PostGIS)
+         Data Layer (Supabase + PostGIS)
     Users · Zones · Policies · Claims · GPS Logs · Audit Logs
                           ↓
          ┌────────────────────────────────┐
-         │  Mobile App (Flutter / React)  │
+         │  Rider App (Mobile)            │
          │  Admin Dashboard (Web)         │
-         │  Push Notifications (FCM)      │
-         │  Payment Gateway (Razorpay)    │
+         │  Notification System (FCM)     │
+         │  Payment System (Razorpay)     │
          └────────────────────────────────┘
 ```
 
+---
+
 ## External Data Sources
 
-* Weather API (OpenWeatherMap)
-  Provides rainfall, temperature, storm alerts, and wind speed data.
+* Weather API: Rainfall, storms, temperature
+* AQI Data: Pollution monitoring
+* GPS and Maps: Location tracking
+* Traffic APIs: Congestion analysis
+* Disaster Alerts: Real-time disruption signals
 
-* Air Quality Data (AQI / CPCB)
-  Monitors pollution levels that can disrupt delivery operations.
+---
 
-* GPS & Maps APIs
-  Tracks rider movement and maps them to operational zones.
+## Backend System (Kavach Core Engine)
 
-* Traffic APIs
-  Detects congestion patterns affecting delivery efficiency.
+### Vighna Engine (Disruption Detection)
 
-* Flood / Disaster Alerts
-  Identifies real-time extreme events impacting rider income.
+Detects real-time disruptions at zone level.
 
-## Backend System
+### Jokhim Engine (Risk Scoring)
 
-### Disruption Detection Engine
+Calculates risk based on environmental and historical data.
 
-Continuously monitors environmental and external signals (weather, AQI, traffic) to detect disruption events at a zone level.
+### Vishwas Engine (Fraud Detection)
 
-### Risk Scoring Module
+Identifies anomalies using behavioral and sensor data.
 
-Calculates risk scores based on:
+### Payout Engine (Compensation Logic)
 
-* Environmental severity
-* Historical disruption patterns
-* Zone vulnerability
+Calculates payouts using hybrid model.
 
-### Fraud Detection System
+### Activity Engine (Work Verification)
 
-Detects anomalies using:
+Validates rider activity during disruption.
 
-* Sensor validation (accelerometer, GPS consistency)
-* Device fingerprinting
-* Behavioral pattern analysis
+### ML Engine (Prediction Pipeline)
 
-### Payout Calculation Engine
+Handles risk prediction and forecasting.
 
-Uses a hybrid model combining:
-
-* Income deviation
-* Activity drop
-* Environmental intensity
-  to compute fair compensation.
-
-### Activity Verification Module
-
-Validates whether a rider was genuinely active during a disruption using:
-
-* GPS session tracking
-* Movement patterns
-* Work consistency
-
-### ML Pipeline
-
-* Gradient boosting for fraud and risk detection
-* Time-series forecasting for disruption prediction
+---
 
 ## Database Layer
 
-### Supabase (PostgreSQL + PostGIS)
+Supabase with PostgreSQL and PostGIS
 
-Stores and manages:
-
-* Users – rider profiles and KYC data
-* Zones – geospatial grid mapping
-* Policies – insurance plans and subscriptions
-* Claims – payout records
-* GPS Logs – real-time tracking data
-* Audit Logs – fraud checks and system decisions
-
-PostGIS enables:
-
+* User data
 * Zone mapping
-* Spatial queries
-* GPS-to-zone assignment
+* Policy management
+* Claims tracking
+* GPS logs
+* Audit trails
+
+---
 
 ## Client Applications
 
-### Mobile Application (Riders)
+### Rider Application
 
-* Built using Flutter / React Native
-* Features:
+* Session tracking
+* Earnings dashboard
+* Risk alerts
+* Claim tracking
 
-  * Start/stop work sessions
-  * Real-time GPS tracking
-  * Disruption alerts
-  * Claim and payout tracking
-  * Offline support
+### Admin Dashboard
 
-### Admin Dashboard (Web)
+* Live monitoring
+* Analytics
+* Fraud review
 
-* Used by insurers and operators
-* Provides:
+### Notification System
 
-  * Live zone monitoring
-  * Claim analytics
-  * Fraud detection insights
-  * System control panel
+* Real-time alerts
+* Claim updates
 
-### Notifications
+### Payment System
 
-* Firebase Cloud Messaging (FCM)
-* Sends:
+* Policy purchase
+* Instant payouts
 
-  * Disruption alerts
-  * Claim status updates
-  * Payout confirmations
+---
 
-### Payments
+## Why Mobile First
 
-* Razorpay (Sandbox/Production)
-* Handles:
+* Works on low-end devices
+* Handles poor connectivity
+* Supports background tracking
+* Optimized for field usage
 
-  * Policy purchases
-  * Instant payouts
-
-## Why Mobile-First Architecture
-
-Delivery workers primarily rely on smartphones with limited connectivity and low-end hardware.
-
-A mobile-first approach ensures:
-
-* Reliable GPS tracking even in low-network areas
-* Background activity monitoring
-* Real-time push notifications
-* Simple, one-handed UI for on-field usage
-
-The admin interface is web-based since insurers operate from desktops.
+---
 
 ## Hyperlocal Zone Model
 
-The system divides cities into 2 km × 2 km grid zones, each evaluated independently.
+* 2 km × 2 km grid system
+* Accurate disruption detection
+* Better fraud control
 
-### Rationale
-
-* Weather APIs provide ~1 km resolution
-* AQI stations cover 3–5 km radius
-* Delivery hubs operate within 1.5–3 km
-* Urban disruptions are highly localized
-
-### Benefits
-
-* Precise disruption detection
-* Reduced false payouts
-* Better fraud isolation
-* Scalable city-wide monitoring
+---
 
 ## Application Workflow
 
-### Rider Flow
-
 ```
-Sign Up / KYC
-        ↓
-Zone Assignment + Income Baseline
-        ↓
-Purchase Policy (via Razorpay)
-        ↓
-Waiting Period → Coverage Active
-        ↓
-Start Work Session (GPS Tracking)
-        ↓
-System Monitors Zone Continuously
-        ↓
+User Signup
+   ↓
+Zone Assignment
+   ↓
+Policy Activation
+   ↓
+Work Session Start
+   ↓
+Disruption Monitoring
+   ↓
 Disruption Detected?
-   YES → Verify Activity + Policy
-        → Calculate Payout
-        → Fraud Check
-            → Approved → Instant Payout
-            → Flagged → Review Queue
-   NO  → Continue Session
-        ↓
-End Session → Earnings + History
+   YES → Verify → Calculate → Fraud Check → Payout
+   NO  → Continue Work
+   ↓
+Session End → Summary
 ```
 
-### Admin / Insurer Flow
-
-* Live disruption map (zone-wise)
-* Active riders per zone
-* Daily / weekly claims
-* Fraud detection queue
-* Loss ratio analytics
-* Predictive disruption insights (next 24–48 hours)
+---
 
 ## Technology Stack
 
-| Layer         | Technology                     | Rationale                      |
-| ------------- | ------------------------------ | ------------------------------ |
-| Mobile App    | Flutter / React Native         | Cross-platform, GPS tracking   |
-| Backend API   | FastAPI / Node.js              | Scalable, real-time processing |
-| Database      | Supabase (PostgreSQL)          | Managed DB with auth           |
-| Geospatial    | PostGIS                        | Spatial queries                |
-| ML / AI       | Python (scikit-learn, Prophet) | Risk + forecasting             |
-| Weather API   | OpenWeatherMap                 | Reliable environmental data    |
-| AQI Data      | AQICN / CPCB                   | Pollution tracking             |
-| Payments      | Razorpay                       | Easy integration               |
-| Notifications | Firebase Cloud Messaging       | Real-time alerts               |
+| Layer               | Technology                        | Purpose                       |
+| ------------------- | --------------------------------- | ----------------------------- |
+| Client Applications | Flutter (Mobile) + React (Web)    | Rider app and admin dashboard |
+| Backend             | FastAPI / Node.js                 | API and business logic        |
+| Database            | Supabase (PostgreSQL)             | Data management and auth      |
+| Geospatial          | PostGIS                           | Location and zone processing  |
+| AI/ML               | Python (scikit-learn, Prophet)    | Prediction and risk models    |
+| External APIs       | OpenWeatherMap, AQI, Traffic APIs | Real-time data ingestion      |
+| Payments            | Razorpay                          | Premiums and payouts          |
+| Notifications       | Firebase Cloud Messaging          | Real-time alerts              |
+
+---
+
+## Screenshots (System Architecture)
+
+### Architecture Overview
+
+* Overall system flow (External APIs → Backend → Database → Client Apps)
+* Kavach Core Engine modules (Vighna, Jokhim, Vishwas, Payout, Activity, ML)
+
+### Backend System
+
+* Engine-wise breakdown (Disruption, Risk, Fraud, Payout, ML)
+* API layer and processing pipeline
+
+### Client Applications
+
+* Rider Mobile App interface
+* Admin Web Dashboard interface
+
+### Data Layer
+
+* Database schema (Users, Zones, Policies, Claims)
+* Geospatial mapping (PostGIS zones)
+
+Store all screenshots inside an `/images` folder and reference them here using:
+
+```
+![Architecture](images/architecture.png)
+![Backend](images/backend.png)
+![Mobile](images/mobile.png)
+![Dashboard](images/dashboard.png)
+```
+
+---
 
 ## Key Design Decisions
 
-### Parametric Insurance Model
-
-Enables:
+Parametric Model
 
 * Instant payouts
-* No manual claim verification
-* Scalable operations
+* No manual claims
 
-### Hybrid Risk Model
+Hybrid Risk Model
 
-Combines:
+* Multiple signals for accuracy
 
-* Environmental data
-* User activity
-* Income patterns
+Zone-Based System
 
-This reduces false positives and improves fairness.
+* Localized decision making
+* Scalable architecture
 
-### Zone-Based Evaluation
+---
 
-Ensures:
+## Team Tagline
 
-* High precision
-* Localized decision-making
-* Better fraud control
-
+bug_hunter – Building intelligent systems that protect, predict, and empower gig workers in real time.
